@@ -43,7 +43,7 @@ def main():
     bundle_folder(folder_path)
     shutil.rmtree(folder_path)
     encrypt_file(folder_path + ".tar.gz", folder_path + ".enc", password)
-    # os.remove(folder_name + ".tar.gz")
+    os.remove(folder_path + ".tar.gz")
 
 if __name__ == "__main__":
     main()
