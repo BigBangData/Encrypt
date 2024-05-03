@@ -3,7 +3,7 @@ import subprocess
 import sys
 import shutil
 
-def bundle_folder(folder_path, output_path):
+def bundle_folder(folder_path):
     """
     Bundle a folder into a tar.gz archive.
 
@@ -11,7 +11,7 @@ def bundle_folder(folder_path, output_path):
         folder_path (str): Path to the folder to be bundled.
         output_path (str): Path to save the resulting archive.
     """
-    shutil.make_archive(output_path, 'gztar', folder_path)
+    shutil.make_archive(folder_path, 'gztar', folder_path)
 
 def encrypt_file(input_file, output_file, password):
     """
@@ -32,18 +32,18 @@ def encrypt_file(input_file, output_file, password):
     subprocess.run(command, check=True)
 
 def main():
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 3:
         print("Usage: python encrypt.py <folder_name> <password>")
         sys.exit(1)
 
-    folder_name = sys.argv[1]
+    folder_path = sys.argv[1]
     password = sys.argv[2]
 
     # Encryption
-    bundle_folder(folder_name, folder_name + ".tar.gz")
-    shutil.rmtree(folder_name)
-    encrypt_file(folder_name + ".tar.gz", folder_name + ".enc", password)
-    os.remove(folder_name + ".tar.gz")
+    bundle_folder(folder_path)
+    shutil.rmtree(folder_path)
+    encrypt_file(folder_path + ".tar.gz", folder_path + ".enc", password)
+    # os.remove(folder_name + ".tar.gz")
 
 if __name__ == "__main__":
     main()
