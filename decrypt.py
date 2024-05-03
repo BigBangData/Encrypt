@@ -2,29 +2,42 @@ import os
 import subprocess
 import sys
 import shutil
+import getpass
 
 def decrypt(input_file, output_file):
     """
     Decrypt a file or bundled folder using OpenSSL.
     """
-    K_ = input("Please enter encryption key: ")
+
+    key = getpass.getpass("Please enter decryption key: ")
+
+    if not key:
+        print("Key cannot be blank or just spaces.")
+        sys.exit(1)
+
     command = [
         'openssl', 'enc',
         '-aes-256-cbc', '-d', '-pbkdf2',
         '-in', input_file,
         '-out', output_file,
-        '-pass', 'pass:' + K_
+        '-pass', 'pass:' + key
     ]
     subprocess.run(command, check=True)
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python decrypt.py <folder_name>")
+        print("Usage: python decrypt.py <encrypted_file.enc>")
         sys.exit(1)
 
-    dir = sys.argv[1]
+    user_input = sys.argv[1]
+    dir, ext = os.path.splitext(user_input)
 
-    encrypted_bundle = ''.join([dir, ".enc"])
+    if not ext == '.enc':
+        print("Please provide the encrypted file's extension.")
+        print("Usage: python decrypt.py <encrypted_file.enc>")
+        sys.exit(1)
+
+    encrypted_bundle = ''.join([user_input])
     decrypted_bundle = ''.join([dir, ".tar.gz"])
 
     if not os.path.exists(encrypted_bundle):
