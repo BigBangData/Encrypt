@@ -58,7 +58,7 @@ $ rm bundle.tar.gz
 
 __Password Handling__
 
-- user enters password interactively during runtime rather than as arguments, which would be vulnerable to various recall methos (shell history, memory dumps, ...)
+- user enters password interactively during runtime rather than as arguments, which would be vulnerable to various recall methods (i.e., shell history, memory dumps, ...)
 - system prompts user for password twice to avoid user error, ensuring user knows and remembers the password before encryption
 
 ---
