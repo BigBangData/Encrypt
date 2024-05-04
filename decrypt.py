@@ -5,9 +5,7 @@ import shutil
 import getpass
 
 def decrypt(input_file, output_file):
-    """
-    Decrypt a file or bundled folder using OpenSSL.
-    """
+    """Decrypt a file or bundled folder using OpenSSL."""
 
     key = getpass.getpass("Please enter decryption key: ")
 
@@ -22,7 +20,15 @@ def decrypt(input_file, output_file):
         '-out', output_file,
         '-pass', 'pass:' + key
     ]
-    subprocess.run(command, check=True)
+
+    try:
+        subprocess.run(
+            command, check=True, 
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
+    except subprocess.CalledProcessError as e:
+        print("Decryption key failed:", e.stderr.decode().strip())
+        sys.exit(1)
 
 def main():
     if len(sys.argv) != 2:

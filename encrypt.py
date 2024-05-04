@@ -5,15 +5,12 @@ import shutil
 import getpass
 
 def bundle_folder(dir):
-    """
-    Bundle a folder into a tar.gz archive.
-    """
+    """Bundle a folder into a tar.gz archive."""
+
     shutil.make_archive(dir, 'gztar', dir)
 
 def encrypt(input_file, output_file):
-    """
-    Encrypt a file or bundled folder using OpenSSL.
-    """
+    """Encrypt a file or bundled folder using OpenSSL."""
 
     key = getpass.getpass("Please enter encryption key: ")
 
