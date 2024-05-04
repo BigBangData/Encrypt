@@ -2,7 +2,26 @@
 
 Couple python scripts to encrypt a folder.
 
-The scripts make it easier to do so than using the command line:
+## How to use
+
+Issue the following commands to encrypt and decrypt:
+- tab-complete as necessary (recommended)
+- spaces in folder name are okay
+- ending in / or not
+
+```python
+# to encrypt a folder
+$ python encrypt.py <folder_name/>
+# provide encryption key (password)
+
+# to decrypt an encrypted folder
+$ python decrypt.py <encrypted_folder_name.enc>
+# provide the same key
+```
+
+## Why
+
+The scripts make it easier to do so than using the command line, which entails the following:
 
 _encryption_
 
@@ -35,8 +54,11 @@ $ tar -xzf bundle.tar.gz
 $ rm bundle.tar.gz
 ```
 
-__Password Handling__
+## Features
 
+__Password Handling__
 
 - user enters password interactively during runtime rather than as arguments, which would be vulnerable to various recall methos (shell history, memory dumps, ...)
 - system prompts user for password twice to avoid user error, ensuring user knows and remembers the password before encryption
+
+---
