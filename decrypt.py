@@ -7,7 +7,7 @@ import getpass
 def decrypt(input_file, output_file):
     """Decrypt a file or bundled folder using OpenSSL."""
 
-    key = getpass.getpass("Please enter decryption key: ")
+    key = getpass.getpass("Please enter decryption key: ").strip()
 
     if not key:
         print("Key cannot be blank or just spaces.")

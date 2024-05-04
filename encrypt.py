@@ -12,7 +12,7 @@ def bundle_folder(dir):
 def encrypt(input_file, output_file):
     """Encrypt a file or bundled folder using OpenSSL."""
 
-    key = getpass.getpass("Please enter encryption key: ")
+    key = getpass.getpass("Please enter encryption key: ").strip()
 
     if not key:
         print("Key cannot be blank or just spaces.")
