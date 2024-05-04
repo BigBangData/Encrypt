@@ -9,14 +9,28 @@ def bundle_folder(dir):
 
     shutil.make_archive(dir, 'gztar', dir)
 
+def get_key():
+    """Get key securely from user and avoid errors."""
+
+    key_1 = getpass.getpass("Enter password: ").strip()
+    if not key_1:
+        print("Key cannot be blank or just spaces.")
+        sys.exit(1)
+
+    key_2 = getpass.getpass("Confirm password: ").strip()
+    if not key_2:
+        print("Key cannot be blank or just spaces.")
+        sys.exit(1)
+    elif key_2 != key_1:
+        print("Passwords do not match.")
+        sys.exit(1)
+
+    return key_1
+
 def encrypt(input_file, output_file):
     """Encrypt a file or bundled folder using OpenSSL."""
 
-    key = getpass.getpass("Please enter encryption key: ").strip()
-
-    if not key:
-        print("Key cannot be blank or just spaces.")
-        sys.exit(1)
+    key = get_key()
 
     command = [
         'openssl', 'enc',

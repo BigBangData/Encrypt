@@ -2,12 +2,12 @@ import os
 import subprocess
 import sys
 import shutil
-import getpass
+from encrypt import get_key
 
 def decrypt(input_file, output_file):
     """Decrypt a file or bundled folder using OpenSSL."""
 
-    key = getpass.getpass("Please enter decryption key: ").strip()
+    key =  get_key()
 
     if not key:
         print("Key cannot be blank or just spaces.")
