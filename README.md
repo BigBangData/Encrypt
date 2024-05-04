@@ -2,7 +2,7 @@
 
 Couple python scripts to encrypt a folder.
 
-## How to use
+## How
 
 Issue the following commands to encrypt and decrypt:
 - tab-complete as necessary (recommended)
@@ -18,6 +18,19 @@ $ python encrypt.py <folder_name/>
 $ python decrypt.py <encrypted_folder_name.enc>
 # provide the same key
 ```
+
+## Try
+
+After cloning repo, issue the following to decrypt:
+
+```python
+$ python decrypt.py Birdcall\ Timer.enc
+```
+
+Enter password: `bird`
+
+(or yes, just revert to a previous commit... pro tip: don't keep version history!)
+
 
 ## Why
 
@@ -54,11 +67,8 @@ $ tar -xzf bundle.tar.gz
 $ rm bundle.tar.gz
 ```
 
-## Features
+## SecOps
 
-__Password Handling__
-
-- user enters password interactively during runtime rather than as arguments, which would be vulnerable to various recall methods (i.e., shell history, memory dumps, ...)
-- system prompts user for password twice to avoid user error, ensuring user knows and remembers the password before encryption
-
+- user enters password interactively during runtime rather than, say, as an argument in the command line, which is vulnerable to recall via hell history, memory dump, etc.
+- system prompts user for password twice to avoid user error
 ---
