@@ -5,36 +5,29 @@ Couple python scripts to encrypt a folder.
 ## How
 
 Issue the following commands to encrypt and decrypt:
-- tab-complete as necessary (recommended)
-- spaces in folder name are okay
-- ending in / or not
 
 ```python
 # to encrypt a folder
 $ python encrypt.py <folder_name/>
-# provide encryption key (password)
+# provide encryption key at runtime
 
 # to decrypt an encrypted folder
 $ python decrypt.py <encrypted_folder_name.enc>
 # provide the same key
 ```
 
-## Try
+## Example
 
 After cloning repo, issue the following to decrypt:
 
 ```python
-$ python decrypt.py Birdcall\ Timer.enc
+$ python decrypt.py Encrypt.enc
+# key: inception
 ```
-
-Enter password: `bird`
-
-(or yes, just revert to a previous commit... pro tip: don't keep version history!)
-
 
 ## Why
 
-The scripts make it easier to do so than using the command line, which entails the following:
+The scripts are more user friendly than:
 
 _encryption_
 
@@ -67,8 +60,8 @@ $ tar -xzf bundle.tar.gz
 $ rm bundle.tar.gz
 ```
 
-## SecOps
+## Todo
 
-- user enters password interactively during runtime rather than, say, as an argument in the command line, which is vulnerable to recall via hell history, memory dump, etc.
-- system prompts user for password twice to avoid user error
+- Use https://github.com/FiloSottile/age?
+
 ---
