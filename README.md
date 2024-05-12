@@ -62,6 +62,6 @@ $ rm bundle.tar.gz
 
 ## Todo
 
-- Use https://github.com/FiloSottile/age?
+- Use https://github.com/FiloSottile/age
 
 ---
